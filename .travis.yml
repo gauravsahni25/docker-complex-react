@@ -4,20 +4,20 @@ services:
 
 
 before_install:
-    - docker build -t gaurav/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t gauravsahni25/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true gaurav/react-test npm test
+    - docker run -e CI=true gauravsahni25/react-test npm test
 
 after_success:
-    - docker build -t gaurav/complex-client ./client
-    - docker build -t gaurav/complex-server ./server
-    - docker build -t gaurav/complex-worker ./worker
-    - docker build -t gaurav/complex-nginx ./nginx
+    - docker build -t gauravsahni25/complex-client ./client
+    - docker build -t gauravsahni25/complex-server ./server
+    - docker build -t gauravsahni25/complex-worker ./worker
+    - docker build -t gauravsahni25/complex-nginx ./nginx
     #LOGIN in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     #Push the images to Docker HUB
-    - docker push gaurav/complex-client
-    - docker push gaurav/complex-server
-    - docker push gaurav/complex-worker
-    - docker push gaurav/complex-nginx
+    - docker push gauravsahni25/complex-client
+    - docker push gauravsahni25/complex-server
+    - docker push gauravsahni25/complex-worker
+    - docker push gauravsahni25/complex-nginx
